@@ -1,0 +1,28 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "autobahn": "^18.3.2",
+    "express": "^4.16.3",
+    "http": "^0.0.0",
+    "nodemon": "^1.17.3",
+    "prohashing": "^1.0.4",
+    "rxjs": "^5.5.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noprobz09/test_prohash.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noprobz09/test_prohash/issues"
+  },
+  "homepage": "https://github.com/noprobz09/test_prohash#readme"
+}
