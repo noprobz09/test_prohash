@@ -1,29 +1,56 @@
 const express = require('express')
-const app = express()
-const prohashing = require("prohashing")
-const connection = new prohashing({ 
-    apiKey: "0a7a6fade943f7b6b9e96b4d1516bfcc733b5158af18d1b43aeec7e45a238c02", 
-    debug: false ,
+const app = express();
+const autobahnConnectionLib = require('./classes/ProhashConnectionLib');
+
+const connection = new autobahnConnectionLib({ 
+    apiKey: "a93f4d5311fed02a4e675d7995dbe6ba43bdc431926ce0e35553439f340aaef8", 
     subscribe : ['systemStatus', 'miners', 'profitability']
-})
+});
+
 
 app.get('/profitability', (req, res) => {
-	res.setHeader('Content-Type', 'application/json');
-    //res.send('hello world');
+
     
-    connection.on("profitability", (profitability) => {
-	    //console.log("PROFITABLILITY UPDATE")
-	    console.log(profitability)
-        //console.log(JSON.stringify(profitability[0]))
+    connection.profitability();
+    //connection.close();
+    // connection
+    // .on("profitability", (profitability) => {
+	//     //console.log("PROFITABLILITY UPDATE")
+	//     //console.log(profitability)
+    //     //console.log(JSON.stringify(profitability[0]))
         
-        
-		//res.json(profitability);
-		//return callback(profitability);
-		
-    })
+	// 	res.send(JSON.stringify(profitability[0]));
+	// 	//res.json(profitability);
+    //     //return callback(profitability);		
+    //     //connection.close();
+
+
+    // });
     
 
-})
+});
+
+
+app.get('/miners', (req, res) => {
+
+    connection.miners();
+    //connection.close();
+    // const connection = new autobahnConnectionLib({ 
+    //     apiKey: "a93f4d5311fed02a4e675d7995dbe6ba43bdc431926ce0e35553439f340aaef8", 
+    //     subscribe : ['systemStatus', 'miners', 'profitability']
+    // })
+
+    // const profitability = connection.profitability();
+    // console.log(profitability);
+    // connection.close();
+
+    
+
+
+});
+
+
+
 
 app.listen(8081, () => console.log('Example app listening on port 8081!'))
 
